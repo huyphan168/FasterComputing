@@ -1,0 +1,355 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+  5.02      0.19     0.01        1    10.04    30.12  raw_pointer_sum()
+  5.02      0.20     0.01        1    10.04   170.65  smart_pointer_sum()
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 4.98% of 0.20 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00    0.20                 main [1]
+                0.01    0.16       1/1           smart_pointer_sum() [2]
+                0.01    0.02       1/1           raw_pointer_sum() [10]
+-----------------------------------------------
+                0.01    0.16       1/1           main [1]
+[2]     85.0    0.01    0.16       1         smart_pointer_sum() [2]
+                0.02    0.06 10000000/20000000     std::unique_ptr<int [], std::default_delete<int []> >::operator[](unsigned long) const [3]
+                0.00    0.08       1/1           sum_elements_smart(std::unique_ptr<int [], std::default_delete<int []> >, unsigned long) [7]
+                0.00    0.00       1/1           std::unique_ptr<int [], std::default_delete<int []> >::unique_ptr(std::unique_ptr<int [], std::default_delete<int []> >&&) [14]
+                0.00    0.00       2/2           std::unique_ptr<int [], std::default_delete<int []> >::~unique_ptr() [30]
+                0.00    0.00       1/1           std::unique_ptr<int [], std::default_delete<int []> >::unique_ptr<int*, std::default_delete<int []>, void, bool>(int*) [42]
+                0.00    0.00       1/1           std::remove_reference<std::unique_ptr<int [], std::default_delete<int []> >&>::type&& std::move<std::unique_ptr<int [], std::default_delete<int []> >&>(std::unique_ptr<int [], std::default_delete<int []> >&) [51]
+-----------------------------------------------
+                0.02    0.06 10000000/20000000     sum_elements_smart(std::unique_ptr<int [], std::default_delete<int []> >, unsigned long) [7]
+                0.02    0.06 10000000/20000000     smart_pointer_sum() [2]
+[3]     80.0    0.04    0.12 20000000         std::unique_ptr<int [], std::default_delete<int []> >::operator[](unsigned long) const [3]
+                0.01    0.11 20000000/20000001     std::unique_ptr<int [], std::default_delete<int []> >::get() const [4]
+-----------------------------------------------
+                0.00    0.00       1/20000001     std::unique_ptr<int [], std::default_delete<int []> >::release() [13]
+                0.01    0.11 20000000/20000001     std::unique_ptr<int [], std::default_delete<int []> >::operator[](unsigned long) const [3]
+[4]     60.0    0.01    0.11 20000001         std::unique_ptr<int [], std::default_delete<int []> >::get() const [4]
+                0.03    0.08 20000001/20000001     std::__uniq_ptr_impl<int, std::default_delete<int []> >::_M_ptr() const [5]
+-----------------------------------------------
+                0.03    0.08 20000001/20000001     std::unique_ptr<int [], std::default_delete<int []> >::get() const [4]
+[5]     55.0    0.03    0.08 20000001         std::__uniq_ptr_impl<int, std::default_delete<int []> >::_M_ptr() const [5]
+                0.02    0.06 20000001/20000001     std::tuple_element<0ul, std::tuple<int*, std::default_delete<int []> > >::type const& std::get<0ul, int*, std::default_delete<int []> >(std::tuple<int*, std::default_delete<int []> > const&) [6]
+-----------------------------------------------
+                0.02    0.06 20000001/20000001     std::__uniq_ptr_impl<int, std::default_delete<int []> >::_M_ptr() const [5]
+[6]     40.0    0.02    0.06 20000001         std::tuple_element<0ul, std::tuple<int*, std::default_delete<int []> > >::type const& std::get<0ul, int*, std::default_delete<int []> >(std::tuple<int*, std::default_delete<int []> > const&) [6]
+                0.02    0.04 20000001/20000001     int* const& std::__get_helper<0ul, int*, std::default_delete<int []> >(std::_Tuple_impl<0ul, int*, std::default_delete<int []> > const&) [8]
+-----------------------------------------------
+                0.00    0.08       1/1           smart_pointer_sum() [2]
+[7]     40.0    0.00    0.08       1         sum_elements_smart(std::unique_ptr<int [], std::default_delete<int []> >, unsigned long) [7]
+                0.02    0.06 10000000/20000000     std::unique_ptr<int [], std::default_delete<int []> >::operator[](unsigned long) const [3]
+-----------------------------------------------
+                0.02    0.04 20000001/20000001     std::tuple_element<0ul, std::tuple<int*, std::default_delete<int []> > >::type const& std::get<0ul, int*, std::default_delete<int []> >(std::tuple<int*, std::default_delete<int []> > const&) [6]
+[8]     30.0    0.02    0.04 20000001         int* const& std::__get_helper<0ul, int*, std::default_delete<int []> >(std::_Tuple_impl<0ul, int*, std::default_delete<int []> > const&) [8]
+                0.02    0.02 20000001/20000001     std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_M_head(std::_Tuple_impl<0ul, int*, std::default_delete<int []> > const&) [9]
+-----------------------------------------------
+                0.02    0.02 20000001/20000001     int* const& std::__get_helper<0ul, int*, std::default_delete<int []> >(std::_Tuple_impl<0ul, int*, std::default_delete<int []> > const&) [8]
+[9]     20.0    0.02    0.02 20000001         std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_M_head(std::_Tuple_impl<0ul, int*, std::default_delete<int []> > const&) [9]
+                0.02    0.00 20000001/20000001     std::_Head_base<0ul, int*, false>::_M_head(std::_Head_base<0ul, int*, false> const&) [11]
+-----------------------------------------------
+                0.01    0.02       1/1           main [1]
+[10]    15.0    0.01    0.02       1         raw_pointer_sum() [10]
+                0.02    0.00       1/1           sum_elements_raw(int*, unsigned long) [12]
+-----------------------------------------------
+                0.02    0.00 20000001/20000001     std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_M_head(std::_Tuple_impl<0ul, int*, std::default_delete<int []> > const&) [9]
+[11]    10.0    0.02    0.00 20000001         std::_Head_base<0ul, int*, false>::_M_head(std::_Head_base<0ul, int*, false> const&) [11]
+-----------------------------------------------
+                0.02    0.00       1/1           raw_pointer_sum() [10]
+[12]    10.0    0.02    0.00       1         sum_elements_raw(int*, unsigned long) [12]
+-----------------------------------------------
+                0.00    0.00       1/1           std::unique_ptr<int [], std::default_delete<int []> >::unique_ptr(std::unique_ptr<int [], std::default_delete<int []> >&&) [14]
+[13]     0.0    0.00    0.00       1         std::unique_ptr<int [], std::default_delete<int []> >::release() [13]
+                0.00    0.00       1/20000001     std::unique_ptr<int [], std::default_delete<int []> >::get() const [4]
+                0.00    0.00       1/4           std::__uniq_ptr_impl<int, std::default_delete<int []> >::_M_ptr() [24]
+-----------------------------------------------
+                0.00    0.00       1/1           smart_pointer_sum() [2]
+[14]     0.0    0.00    0.00       1         std::unique_ptr<int [], std::default_delete<int []> >::unique_ptr(std::unique_ptr<int [], std::default_delete<int []> >&&) [14]
+                0.00    0.00       1/1           std::unique_ptr<int [], std::default_delete<int []> >::release() [13]
+                0.00    0.00       1/2           std::unique_ptr<int [], std::default_delete<int []> >::get_deleter() [29]
+                0.00    0.00       1/6           std::default_delete<int []>&& std::forward<std::default_delete<int []> >(std::remove_reference<std::default_delete<int []> >::type&) [21]
+                0.00    0.00       1/1           std::__uniq_ptr_impl<int, std::default_delete<int []> >::__uniq_ptr_impl<std::default_delete<int []> >(int*, std::default_delete<int []>&&) [48]
+-----------------------------------------------
+                0.00    0.00       1/6           std::unique_ptr<int [], std::default_delete<int []> >::unique_ptr(std::unique_ptr<int [], std::default_delete<int []> >&&) [14]
+                0.00    0.00       1/6           std::__uniq_ptr_impl<int, std::default_delete<int []> >::__uniq_ptr_impl<std::default_delete<int []> >(int*, std::default_delete<int []>&&) [48]
+                0.00    0.00       1/6           std::tuple<int*, std::default_delete<int []> >::tuple<int*&, std::default_delete<int []>, true>(int*&, std::default_delete<int []>&&) [49]
+                0.00    0.00       1/6           std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_Tuple_impl<int*&, std::default_delete<int []>, void>(int*&, std::default_delete<int []>&&) [44]
+                0.00    0.00       1/6           std::_Tuple_impl<1ul, std::default_delete<int []> >::_Tuple_impl<std::default_delete<int []> >(std::default_delete<int []>&&) [46]
+                0.00    0.00       1/6           std::_Head_base<1ul, std::default_delete<int []>, true>::_Head_base<std::default_delete<int []> >(std::default_delete<int []>&&) [41]
+[21]     0.0    0.00    0.00       6         std::default_delete<int []>&& std::forward<std::default_delete<int []> >(std::remove_reference<std::default_delete<int []> >::type&) [21]
+-----------------------------------------------
+                0.00    0.00       4/4           std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_M_head(std::_Tuple_impl<0ul, int*, std::default_delete<int []> >&) [23]
+[22]     0.0    0.00    0.00       4         std::_Head_base<0ul, int*, false>::_M_head(std::_Head_base<0ul, int*, false>&) [22]
+-----------------------------------------------
+                0.00    0.00       4/4           int*& std::__get_helper<0ul, int*, std::default_delete<int []> >(std::_Tuple_impl<0ul, int*, std::default_delete<int []> >&) [25]
+[23]     0.0    0.00    0.00       4         std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_M_head(std::_Tuple_impl<0ul, int*, std::default_delete<int []> >&) [23]
+                0.00    0.00       4/4           std::_Head_base<0ul, int*, false>::_M_head(std::_Head_base<0ul, int*, false>&) [22]
+-----------------------------------------------
+                0.00    0.00       1/4           std::__uniq_ptr_impl<int, std::default_delete<int []> >::__uniq_ptr_impl(int*) [47]
+                0.00    0.00       1/4           std::unique_ptr<int [], std::default_delete<int []> >::release() [13]
+                0.00    0.00       2/4           std::unique_ptr<int [], std::default_delete<int []> >::~unique_ptr() [30]
+[24]     0.0    0.00    0.00       4         std::__uniq_ptr_impl<int, std::default_delete<int []> >::_M_ptr() [24]
+                0.00    0.00       4/4           std::tuple_element<0ul, std::tuple<int*, std::default_delete<int []> > >::type& std::get<0ul, int*, std::default_delete<int []> >(std::tuple<int*, std::default_delete<int []> >&) [26]
+-----------------------------------------------
+                0.00    0.00       4/4           std::tuple_element<0ul, std::tuple<int*, std::default_delete<int []> > >::type& std::get<0ul, int*, std::default_delete<int []> >(std::tuple<int*, std::default_delete<int []> >&) [26]
+[25]     0.0    0.00    0.00       4         int*& std::__get_helper<0ul, int*, std::default_delete<int []> >(std::_Tuple_impl<0ul, int*, std::default_delete<int []> >&) [25]
+                0.00    0.00       4/4           std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_M_head(std::_Tuple_impl<0ul, int*, std::default_delete<int []> >&) [23]
+-----------------------------------------------
+                0.00    0.00       4/4           std::__uniq_ptr_impl<int, std::default_delete<int []> >::_M_ptr() [24]
+[26]     0.0    0.00    0.00       4         std::tuple_element<0ul, std::tuple<int*, std::default_delete<int []> > >::type& std::get<0ul, int*, std::default_delete<int []> >(std::tuple<int*, std::default_delete<int []> >&) [26]
+                0.00    0.00       4/4           int*& std::__get_helper<0ul, int*, std::default_delete<int []> >(std::_Tuple_impl<0ul, int*, std::default_delete<int []> >&) [25]
+-----------------------------------------------
+                0.00    0.00       1/3           std::tuple<int*, std::default_delete<int []> >::tuple<int*&, std::default_delete<int []>, true>(int*&, std::default_delete<int []>&&) [49]
+                0.00    0.00       1/3           std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_Tuple_impl<int*&, std::default_delete<int []>, void>(int*&, std::default_delete<int []>&&) [44]
+                0.00    0.00       1/3           std::_Head_base<0ul, int*, false>::_Head_base<int*&>(int*&) [38]
+[27]     0.0    0.00    0.00       3         int*& std::forward<int*&>(std::remove_reference<int*&>::type&) [27]
+-----------------------------------------------
+                0.00    0.00       2/2           std::_Tuple_impl<1ul, std::default_delete<int []> >::_M_head(std::_Tuple_impl<1ul, std::default_delete<int []> >&) [31]
+[28]     0.0    0.00    0.00       2         std::_Head_base<1ul, std::default_delete<int []>, true>::_M_head(std::_Head_base<1ul, std::default_delete<int []>, true>&) [28]
+-----------------------------------------------
+                0.00    0.00       1/2           std::unique_ptr<int [], std::default_delete<int []> >::~unique_ptr() [30]
+                0.00    0.00       1/2           std::unique_ptr<int [], std::default_delete<int []> >::unique_ptr(std::unique_ptr<int [], std::default_delete<int []> >&&) [14]
+[29]     0.0    0.00    0.00       2         std::unique_ptr<int [], std::default_delete<int []> >::get_deleter() [29]
+                0.00    0.00       2/2           std::__uniq_ptr_impl<int, std::default_delete<int []> >::_M_deleter() [32]
+-----------------------------------------------
+                0.00    0.00       2/2           smart_pointer_sum() [2]
+[30]     0.0    0.00    0.00       2         std::unique_ptr<int [], std::default_delete<int []> >::~unique_ptr() [30]
+                0.00    0.00       2/4           std::__uniq_ptr_impl<int, std::default_delete<int []> >::_M_ptr() [24]
+                0.00    0.00       1/2           std::unique_ptr<int [], std::default_delete<int []> >::get_deleter() [29]
+                0.00    0.00       1/1           std::enable_if<std::is_convertible<int (*) [], int (*) []>::value, void>::type std::default_delete<int []>::operator()<int>(int*) const [37]
+-----------------------------------------------
+                0.00    0.00       2/2           std::default_delete<int []>& std::__get_helper<1ul, std::default_delete<int []>>(std::_Tuple_impl<1ul, std::default_delete<int []>>&) [33]
+[31]     0.0    0.00    0.00       2         std::_Tuple_impl<1ul, std::default_delete<int []> >::_M_head(std::_Tuple_impl<1ul, std::default_delete<int []> >&) [31]
+                0.00    0.00       2/2           std::_Head_base<1ul, std::default_delete<int []>, true>::_M_head(std::_Head_base<1ul, std::default_delete<int []>, true>&) [28]
+-----------------------------------------------
+                0.00    0.00       2/2           std::unique_ptr<int [], std::default_delete<int []> >::get_deleter() [29]
+[32]     0.0    0.00    0.00       2         std::__uniq_ptr_impl<int, std::default_delete<int []> >::_M_deleter() [32]
+                0.00    0.00       2/2           std::tuple_element<1ul, std::tuple<int*, std::default_delete<int []> > >::type& std::get<1ul, int*, std::default_delete<int []> >(std::tuple<int*, std::default_delete<int []> >&) [34]
+-----------------------------------------------
+                0.00    0.00       2/2           std::tuple_element<1ul, std::tuple<int*, std::default_delete<int []> > >::type& std::get<1ul, int*, std::default_delete<int []> >(std::tuple<int*, std::default_delete<int []> >&) [34]
+[33]     0.0    0.00    0.00       2         std::default_delete<int []>& std::__get_helper<1ul, std::default_delete<int []>>(std::_Tuple_impl<1ul, std::default_delete<int []>>&) [33]
+                0.00    0.00       2/2           std::_Tuple_impl<1ul, std::default_delete<int []> >::_M_head(std::_Tuple_impl<1ul, std::default_delete<int []> >&) [31]
+-----------------------------------------------
+                0.00    0.00       2/2           std::__uniq_ptr_impl<int, std::default_delete<int []> >::_M_deleter() [32]
+[34]     0.0    0.00    0.00       2         std::tuple_element<1ul, std::tuple<int*, std::default_delete<int []> > >::type& std::get<1ul, int*, std::default_delete<int []> >(std::tuple<int*, std::default_delete<int []> >&) [34]
+                0.00    0.00       2/2           std::default_delete<int []>& std::__get_helper<1ul, std::default_delete<int []>>(std::_Tuple_impl<1ul, std::default_delete<int []>>&) [33]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [55]
+[35]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z16sum_elements_rawPim [35]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [36]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z16sum_elements_rawPim [35]
+[36]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [36]
+-----------------------------------------------
+                0.00    0.00       1/1           std::unique_ptr<int [], std::default_delete<int []> >::~unique_ptr() [30]
+[37]     0.0    0.00    0.00       1         std::enable_if<std::is_convertible<int (*) [], int (*) []>::value, void>::type std::default_delete<int []>::operator()<int>(int*) const [37]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_Tuple_impl<int*&, std::default_delete<int []>, void>(int*&, std::default_delete<int []>&&) [44]
+[38]     0.0    0.00    0.00       1         std::_Head_base<0ul, int*, false>::_Head_base<int*&>(int*&) [38]
+                0.00    0.00       1/3           int*& std::forward<int*&>(std::remove_reference<int*&>::type&) [27]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_Tuple_impl() [43]
+[39]     0.0    0.00    0.00       1         std::_Head_base<0ul, int*, false>::_Head_base() [39]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Tuple_impl<1ul, std::default_delete<int []> >::_Tuple_impl() [45]
+[40]     0.0    0.00    0.00       1         std::_Head_base<1ul, std::default_delete<int []>, true>::_Head_base() [40]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Tuple_impl<1ul, std::default_delete<int []> >::_Tuple_impl<std::default_delete<int []> >(std::default_delete<int []>&&) [46]
+[41]     0.0    0.00    0.00       1         std::_Head_base<1ul, std::default_delete<int []>, true>::_Head_base<std::default_delete<int []> >(std::default_delete<int []>&&) [41]
+                0.00    0.00       1/6           std::default_delete<int []>&& std::forward<std::default_delete<int []> >(std::remove_reference<std::default_delete<int []> >::type&) [21]
+-----------------------------------------------
+                0.00    0.00       1/1           smart_pointer_sum() [2]
+[42]     0.0    0.00    0.00       1         std::unique_ptr<int [], std::default_delete<int []> >::unique_ptr<int*, std::default_delete<int []>, void, bool>(int*) [42]
+                0.00    0.00       1/1           std::__uniq_ptr_impl<int, std::default_delete<int []> >::__uniq_ptr_impl(int*) [47]
+-----------------------------------------------
+                0.00    0.00       1/1           std::tuple<int*, std::default_delete<int []> >::tuple<int*, std::default_delete<int []>, true>() [50]
+[43]     0.0    0.00    0.00       1         std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_Tuple_impl() [43]
+                0.00    0.00       1/1           std::_Head_base<0ul, int*, false>::_Head_base() [39]
+                0.00    0.00       1/1           std::_Tuple_impl<1ul, std::default_delete<int []> >::_Tuple_impl() [45]
+-----------------------------------------------
+                0.00    0.00       1/1           std::tuple<int*, std::default_delete<int []> >::tuple<int*&, std::default_delete<int []>, true>(int*&, std::default_delete<int []>&&) [49]
+[44]     0.0    0.00    0.00       1         std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_Tuple_impl<int*&, std::default_delete<int []>, void>(int*&, std::default_delete<int []>&&) [44]
+                0.00    0.00       1/6           std::default_delete<int []>&& std::forward<std::default_delete<int []> >(std::remove_reference<std::default_delete<int []> >::type&) [21]
+                0.00    0.00       1/1           std::_Tuple_impl<1ul, std::default_delete<int []> >::_Tuple_impl<std::default_delete<int []> >(std::default_delete<int []>&&) [46]
+                0.00    0.00       1/1           std::_Head_base<0ul, int*, false>::_Head_base<int*&>(int*&) [38]
+                0.00    0.00       1/3           int*& std::forward<int*&>(std::remove_reference<int*&>::type&) [27]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_Tuple_impl() [43]
+[45]     0.0    0.00    0.00       1         std::_Tuple_impl<1ul, std::default_delete<int []> >::_Tuple_impl() [45]
+                0.00    0.00       1/1           std::_Head_base<1ul, std::default_delete<int []>, true>::_Head_base() [40]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_Tuple_impl<int*&, std::default_delete<int []>, void>(int*&, std::default_delete<int []>&&) [44]
+[46]     0.0    0.00    0.00       1         std::_Tuple_impl<1ul, std::default_delete<int []> >::_Tuple_impl<std::default_delete<int []> >(std::default_delete<int []>&&) [46]
+                0.00    0.00       1/6           std::default_delete<int []>&& std::forward<std::default_delete<int []> >(std::remove_reference<std::default_delete<int []> >::type&) [21]
+                0.00    0.00       1/1           std::_Head_base<1ul, std::default_delete<int []>, true>::_Head_base<std::default_delete<int []> >(std::default_delete<int []>&&) [41]
+-----------------------------------------------
+                0.00    0.00       1/1           std::unique_ptr<int [], std::default_delete<int []> >::unique_ptr<int*, std::default_delete<int []>, void, bool>(int*) [42]
+[47]     0.0    0.00    0.00       1         std::__uniq_ptr_impl<int, std::default_delete<int []> >::__uniq_ptr_impl(int*) [47]
+                0.00    0.00       1/1           std::tuple<int*, std::default_delete<int []> >::tuple<int*, std::default_delete<int []>, true>() [50]
+                0.00    0.00       1/4           std::__uniq_ptr_impl<int, std::default_delete<int []> >::_M_ptr() [24]
+-----------------------------------------------
+                0.00    0.00       1/1           std::unique_ptr<int [], std::default_delete<int []> >::unique_ptr(std::unique_ptr<int [], std::default_delete<int []> >&&) [14]
+[48]     0.0    0.00    0.00       1         std::__uniq_ptr_impl<int, std::default_delete<int []> >::__uniq_ptr_impl<std::default_delete<int []> >(int*, std::default_delete<int []>&&) [48]
+                0.00    0.00       1/6           std::default_delete<int []>&& std::forward<std::default_delete<int []> >(std::remove_reference<std::default_delete<int []> >::type&) [21]
+                0.00    0.00       1/1           std::tuple<int*, std::default_delete<int []> >::tuple<int*&, std::default_delete<int []>, true>(int*&, std::default_delete<int []>&&) [49]
+-----------------------------------------------
+                0.00    0.00       1/1           std::__uniq_ptr_impl<int, std::default_delete<int []> >::__uniq_ptr_impl<std::default_delete<int []> >(int*, std::default_delete<int []>&&) [48]
+[49]     0.0    0.00    0.00       1         std::tuple<int*, std::default_delete<int []> >::tuple<int*&, std::default_delete<int []>, true>(int*&, std::default_delete<int []>&&) [49]
+                0.00    0.00       1/6           std::default_delete<int []>&& std::forward<std::default_delete<int []> >(std::remove_reference<std::default_delete<int []> >::type&) [21]
+                0.00    0.00       1/3           int*& std::forward<int*&>(std::remove_reference<int*&>::type&) [27]
+                0.00    0.00       1/1           std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_Tuple_impl<int*&, std::default_delete<int []>, void>(int*&, std::default_delete<int []>&&) [44]
+-----------------------------------------------
+                0.00    0.00       1/1           std::__uniq_ptr_impl<int, std::default_delete<int []> >::__uniq_ptr_impl(int*) [47]
+[50]     0.0    0.00    0.00       1         std::tuple<int*, std::default_delete<int []> >::tuple<int*, std::default_delete<int []>, true>() [50]
+                0.00    0.00       1/1           std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_Tuple_impl() [43]
+-----------------------------------------------
+                0.00    0.00       1/1           smart_pointer_sum() [2]
+[51]     0.0    0.00    0.00       1         std::remove_reference<std::unique_ptr<int [], std::default_delete<int []> >&>::type&& std::move<std::unique_ptr<int [], std::default_delete<int []> >&>(std::unique_ptr<int [], std::default_delete<int []> >&) [51]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [35] _GLOBAL__sub_I__Z16sum_elements_rawPim [40] std::_Head_base<1ul, std::default_delete<int []>, true>::_Head_base() [24] std::__uniq_ptr_impl<int, std::default_delete<int []> >::_M_ptr()
+  [10] raw_pointer_sum()      [41] std::_Head_base<1ul, std::default_delete<int []>, true>::_Head_base<std::default_delete<int []> >(std::default_delete<int []>&&) [47] std::__uniq_ptr_impl<int, std::default_delete<int []> >::__uniq_ptr_impl(int*)
+  [12] sum_elements_raw(int*, unsigned long) [29] std::unique_ptr<int [], std::default_delete<int []> >::get_deleter() [48] std::__uniq_ptr_impl<int, std::default_delete<int []> >::__uniq_ptr_impl<std::default_delete<int []> >(int*, std::default_delete<int []>&&)
+   [2] smart_pointer_sum()    [13] std::unique_ptr<int [], std::default_delete<int []> >::release() [49] std::tuple<int*, std::default_delete<int []> >::tuple<int*&, std::default_delete<int []>, true>(int*&, std::default_delete<int []>&&)
+   [7] sum_elements_smart(std::unique_ptr<int [], std::default_delete<int []> >, unsigned long) [14] std::unique_ptr<int [], std::default_delete<int []> >::unique_ptr(std::unique_ptr<int [], std::default_delete<int []> >&&) [50] std::tuple<int*, std::default_delete<int []> >::tuple<int*, std::default_delete<int []>, true>()
+  [36] __static_initialization_and_destruction_0(int, int) [42] std::unique_ptr<int [], std::default_delete<int []> >::unique_ptr<int*, std::default_delete<int []>, void, bool>(int*) [8] int* const& std::__get_helper<0ul, int*, std::default_delete<int []> >(std::_Tuple_impl<0ul, int*, std::default_delete<int []> > const&)
+   [4] std::unique_ptr<int [], std::default_delete<int []> >::get() const [30] std::unique_ptr<int [], std::default_delete<int []> >::~unique_ptr() [25] int*& std::__get_helper<0ul, int*, std::default_delete<int []> >(std::_Tuple_impl<0ul, int*, std::default_delete<int []> >&)
+   [3] std::unique_ptr<int [], std::default_delete<int []> >::operator[](unsigned long) const [9] std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_M_head(std::_Tuple_impl<0ul, int*, std::default_delete<int []> > const&) [33] std::default_delete<int []>& std::__get_helper<1ul, std::default_delete<int []>>(std::_Tuple_impl<1ul, std::default_delete<int []>>&)
+  [37] std::enable_if<std::is_convertible<int (*) [], int (*) []>::value, void>::type std::default_delete<int []>::operator()<int>(int*) const [23] std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_M_head(std::_Tuple_impl<0ul, int*, std::default_delete<int []> >&) [6] std::tuple_element<0ul, std::tuple<int*, std::default_delete<int []> > >::type const& std::get<0ul, int*, std::default_delete<int []> >(std::tuple<int*, std::default_delete<int []> > const&)
+   [5] std::__uniq_ptr_impl<int, std::default_delete<int []> >::_M_ptr() const [43] std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_Tuple_impl() [26] std::tuple_element<0ul, std::tuple<int*, std::default_delete<int []> > >::type& std::get<0ul, int*, std::default_delete<int []> >(std::tuple<int*, std::default_delete<int []> >&)
+  [11] std::_Head_base<0ul, int*, false>::_M_head(std::_Head_base<0ul, int*, false> const&) [44] std::_Tuple_impl<0ul, int*, std::default_delete<int []> >::_Tuple_impl<int*&, std::default_delete<int []>, void>(int*&, std::default_delete<int []>&&) [34] std::tuple_element<1ul, std::tuple<int*, std::default_delete<int []> > >::type& std::get<1ul, int*, std::default_delete<int []> >(std::tuple<int*, std::default_delete<int []> >&)
+  [22] std::_Head_base<0ul, int*, false>::_M_head(std::_Head_base<0ul, int*, false>&) [31] std::_Tuple_impl<1ul, std::default_delete<int []> >::_M_head(std::_Tuple_impl<1ul, std::default_delete<int []> >&) [51] std::remove_reference<std::unique_ptr<int [], std::default_delete<int []> >&>::type&& std::move<std::unique_ptr<int [], std::default_delete<int []> >&>(std::unique_ptr<int [], std::default_delete<int []> >&)
+  [38] std::_Head_base<0ul, int*, false>::_Head_base<int*&>(int*&) [45] std::_Tuple_impl<1ul, std::default_delete<int []> >::_Tuple_impl() [27] int*& std::forward<int*&>(std::remove_reference<int*&>::type&)
+  [39] std::_Head_base<0ul, int*, false>::_Head_base() [46] std::_Tuple_impl<1ul, std::default_delete<int []> >::_Tuple_impl<std::default_delete<int []> >(std::default_delete<int []>&&) [21] std::default_delete<int []>&& std::forward<std::default_delete<int []> >(std::remove_reference<std::default_delete<int []> >::type&)
+  [28] std::_Head_base<1ul, std::default_delete<int []>, true>::_M_head(std::_Head_base<1ul, std::default_delete<int []>, true>&) [32] std::__uniq_ptr_impl<int, std::default_delete<int []> >::_M_deleter()
